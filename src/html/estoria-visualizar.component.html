@@ -1,0 +1,46 @@
+<div *ngIf="estoria">
+    <h4 class="header center-align orange-text">Estória: {{estoria.titulo}}</h4><br />
+
+    <div class="row">
+        <div class="input-field">
+            <input id="id" type="text" [(ngModel)]="estoria.id" disabled />
+            <label for="id" class="active">ID:</label>
+        </div>
+
+        <div class="input-field">
+            <input id="titulo" type="text" [(ngModel)]="estoria.titulo" placeholder="titulo" />
+            <label for="titulo" class="active">Título:</label>
+        </div>
+    
+        <div class="input-field">
+            <input id="descricao" type="text" [(ngModel)]="estoria.descricao" placeholder="descrição" />
+            <label for="descricao" class="active">Descrição:</label>
+        </div>
+    
+        <div class="input-field">
+            <input id="pontos" type="text" [(ngModel)]="estoria.pontos" placeholder="pontos" />
+            <label for="pontos" class="active">Pontos:</label>
+        </div>
+        
+        <div class="clearfix"></div>
+        <p><br/></p>
+        <h5 *ngIf="tarefa.id > 0">TAREFAS</h5>
+        <div class="col s12">
+            <tarefa *ngFor="let tarefa of estoria.tarefas" [tarefa]="tarefa" [estoria]="estoria"></tarefa>
+        </div>
+        <div class="col s10">
+            
+            <div class="input-field">
+                <label for="tarefa" class="active">Adicionar tarefa:</label>
+                <input id="tarefa" type="text" [(ngModel)]="tarefa.descricao" placeholder="Informe uma tarefa" />
+            </div>
+        </div>
+        <div class="col s2">
+            <button (click)="adicionarTarefa()" class="waves-effect waves-light btn-floating right"><i class="material-icons">add</i></button>
+        </div>
+        <div class="clearfix"></div>
+        <p><br/></p>
+        <button (click)="voltar()" class="waves-effect waves-light btn left">Voltar</button>
+        <button (click)="salvar()" class="waves-effect waves-light btn right" >Salvar</button>
+    </div>
+</div>
